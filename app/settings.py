@@ -9,6 +9,7 @@ RABBITMQ_HOSTNAME = config.get("rabbitmq.hostname")
 RABBITMQ_USER = config.get("rabbitmq.user")
 RABBITMQ_PASSWORD = config.get("rabbitmq.password")
 RABBITMQ_QUEUE_MANAGER = config.get("rabbitmq.queue.manager")
+RABBITMQ_QUEUE_MONGO = config.get("rabbitmq.queue.mongo")
 
 ####### MongoDB Settings ########
 MONGO_HOSTNAME = config.get("mongo.hostname")

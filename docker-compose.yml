@@ -27,7 +27,7 @@ services:
     networks:
       - mynetwork
 
-  # Our Python App to manager the messages
+  # Python Manager App
   python_manager:
     build:
       context: .  # root directory
@@ -36,8 +36,21 @@ services:
     networks:
       - mynetwork
     depends_on:
-      - mongodb
       - rabbitmq
+      - mongodb
+
+  # Python Saver App
+  python_saver:
+    build:
+      context: .  # root directory
+      dockerfile: Dockerfile_python_saver
+    container_name: PYTHON_SAVER
+    networks:
+      - mynetwork
+    depends_on:
+      - rabbitmq
+      - mongodb
+      - python_manager
 
 volumes:
   mongo-data:

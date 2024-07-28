@@ -6,7 +6,8 @@ rabbitmq:
   user: user
   password: password
   queue:
-    manager: queue_manager
+    manager: queue_manager # Responsible to send the message
+    mongo: queue_mongo # Responsible to save the message
 
 mongo:
   hostname: mongodb

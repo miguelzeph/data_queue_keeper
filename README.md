@@ -60,6 +60,20 @@ source ./<your_env_name>/bin/activate #  On Windows, use `<your_env_name>\Script
 pip install -r requirements.txt
 ```
 
+4. Verify Data Insertion in MongoDB.
+
+You can use a MongoDB client or the command line to check the stored data:
+
+```bash
+mongosh --host localhost --port 27017
+
+use task_management
+db.task.find().pretty()
+```
+
+This will display the documents inserted into the task collection of the task_management database.
+
+
 # Running the Application
 
 To run the project, follow the steps below:

@@ -52,7 +52,7 @@ It is a good practice to create a virtual environment to manage the project's de
 virtualenv --python=<your_python_path> <your_env_name>
 
 # Activate virtual env
-source ./env/bin/activate #  On Windows, use `venv\Scripts\activate`
+source ./<your_env_name>/bin/activate #  On Windows, use `<your_env_name>\Scripts\activate`
 ```
 
 3. Installing the dependecies, execute:

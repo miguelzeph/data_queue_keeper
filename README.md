@@ -40,7 +40,7 @@ The project directory structure is organized as follows:
 Clone the project repository to your local working directory:
 
 ```bash
-git clone LINKxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+git clone git@github.com:miguelzeph/data_queue_keeper.git
 cd data-queue-keeper
 ```
 

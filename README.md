@@ -6,34 +6,34 @@
 - **MongoDB**: Used for persistent data storage.
 - **Python Application**: Consumes messages from the RabbitMQ queue and saves them in MongoDB.
 
-
-
-# Prerequisites
+## Prerequisites
 Before setting up the project, ensure you have the following tools installed on your system:
 
 - Docker/Docker Compose
 - Python 3.11 or higher
 
-# Project Structure
+## Project Structure
 The project directory structure is organized as follows:
 ```bash
 .
-├── app # Main directory of the Python application
-│   ├── consumers # Contains the code responsible for consuming messages from RabbitMQ.
-│   │   ├── manager.py # Implements the logic for connecting to RabbitMQ and MongoDB, as well as processing messages
-│   └── main.py # Main file that starts the application.
-│   └── settings.py # Contains the settings and environment variables for the application.
-├── config.yml # onfiguration file that contains the definitions for RabbitMQ, MongoDB, and logger.
-├── docker-compose.yml # Docker Compose configuration file for orchestrating the containers.
-├── Dockerfile_python_manager # Defines the Docker environment for the Python application.
-├── README.md # Project documentation.
-├── requirements.txt # List of Python dependencies required for the project
-└── sender.py # Script used to send messages to the RabbitMQ queue for testing purposes.
+├── app
+│   ├── consumers
+│   │   ├── class_basic.py      # Defines the base class with common functionalities for data consumers
+│   │   ├── class_manager.py    # Defines the Manager class for consuming messages from RabbitMQ and processing them
+│   │   └──class_mongo.py      # Defines the MongoDBClient class for connecting to and storing data in MongoDB
+│   ├── manager.py              # Script to start the Manager
+│   ├── saver.py                # Script to start the Saver
+│   └── settings.py             # Contains the settings and environment variables for the application
+├── config.yml                  # Configuration file that contains definitions for RabbitMQ, MongoDB, and logger
+├── docker-compose.yml          # Docker Compose configuration file for orchestrating the containers
+├── Dockerfile_python_manager   # Defines the Docker environment for the Python Manager application
+├── Dockerfile_python_saver     # Defines the Docker environment for the Python Saver application
+├── README.md                   # Project documentation
+├── requirements.txt            # List of Python dependencies required for the project
+└── sender.py                   # Script used to send messages to the RabbitMQ queue for testing purposes
 ```
 
-
-
-# Environment Setup
+## Environment Setup
 
 1. Clone the Repository
 
@@ -74,7 +74,7 @@ db.task.find().pretty()
 This will display the documents inserted into the task collection of the task_management database.
 
 
-# Running the Application
+## Running the Application
 
 To run the project, follow the steps below:
 
@@ -109,7 +109,7 @@ This script will send JSON messages to the RabbitMQ queue, which will be process
 {"title":"your title...", "message":"Write here your message....", "year":2024}
 ```
 
-# Playing with Containers
+## Playing with Containers
 
 In this section, we'll explore the resilience of the RabbitMQ messaging system by intentionally stopping the Python manager app container. This demonstration will show you how RabbitMQ handles messages when the consumer is inactive and what happens when it resumes.
 
@@ -147,4 +147,3 @@ docker-compose start python_manager
 Once the container is up and running, it will begin consuming the messages queued in RabbitMQ and storing them in MongoDB.
 
 5. Finally, check MongoDB for processed messages
-

@@ -11,4 +11,4 @@ COPY . .
 # Define the var envs
 ENV KLEIN_CONFIG=./config.yml
 
-CMD ["python", "app/manager.py"]
+CMD ["python", "app/saver.py"]

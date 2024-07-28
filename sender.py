@@ -1,3 +1,4 @@
+# Example of Script of how to send message to RabbitMQ
 import pika
 import json
 

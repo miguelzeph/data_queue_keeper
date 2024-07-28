@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+  # Mongo Container
+  mongodb:
+    image: mongo:latest
+    hostname: mongodb
+    container_name: MONGODB
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+    networks:
+      - mynetwork
+
+  # Rabbitmq Container
+  rabbitmq:
+    image: rabbitmq:3-management
+    hostname: rabbitmq
+    container_name: RABBITMQ
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: user
+      RABBITMQ_DEFAULT_PASS: password
+    networks:
+      - mynetwork
+
+  # Our Python App to manager the messages
+  python_manager:
+    build:
+      context: .  # root directory
+      dockerfile: Dockerfile_python_manager
+    container_name: PYTHON_MANAGER
+    networks:
+      - mynetwork
+    depends_on:
+      - mongodb
+      - rabbitmq
+
+volumes:
+  mongo-data:
+    driver: local
+
+networks:
+  mynetwork:
+    driver: bridge

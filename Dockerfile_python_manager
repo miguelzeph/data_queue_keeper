@@ -1,0 +1,14 @@
+# Use a base image of Python
+FROM python:3.11-slim
+
+# Copy the requirements.txt file and install the dependencies
+COPY requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy the rest of the project files to the working directory
+COPY . .
+
+# Define the var envs
+ENV KLEIN_CONFIG=./config.yml
+
+CMD ["python", "app/main.py"]

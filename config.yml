@@ -1,0 +1,15 @@
+logger:
+  level: INFO
+
+rabbitmq:
+  hostname: rabbitmq
+  user: user
+  password: password
+  queue:
+    manager: queue_manager
+
+mongo:
+  hostname: mongodb
+  port: 27017
+  database: task_management
+  collection: task
